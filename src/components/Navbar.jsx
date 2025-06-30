@@ -80,7 +80,7 @@ const Navbar = () => {
           {/* Left: Profile (always visible and aligned) */}
           <div className="flex items-center gap-3 relative z-10">
             <div className="relative">
-              <img src={avatar} alt="profile" className="w-10 h-10 rounded-full border-2 border-[#23242a]" />
+              <img src={avatar} alt="Avatar" className="w-10 h-10 rounded-full border-2 border-[#23242a]" />
               {/* Green status dot */}
               <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-black rounded-full" />
             </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import hamisiImg from "../assets/HAMISI.jpg";
+import avatar from "../assets/avater.svg";
 import html5Logo from "../assets/logo/html5.svg";
 import jsLogo from "../assets/logo/javascript.svg";
 import reactLogo from "../assets/logo/React.svg";
@@ -36,7 +36,7 @@ const Value = () => (
       <div className="flex items-center gap-4 mb-2">
         {/* Profile Picture */}
         <div className="w-28 h-28 rounded-full bg-[#23242a] flex items-center justify-center overflow-hidden shadow-lg">
-          <img src={hamisiImg} alt="Hamisi Abdalla" className="object-cover" />
+          <img src={avatar} alt="Avatar" className="object-cover" />
         </div>
         {/* Animated Arrow Loader */}
         <div className="flex flex-col items-center">

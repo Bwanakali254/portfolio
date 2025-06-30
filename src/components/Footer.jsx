@@ -1,7 +1,7 @@
 import React from "react";
 import avatar from "../assets/avater.svg";
 import { Linkedin, Instagram } from "lucide-react";
-import hamisiImg from "../assets/HAMISI.jpg";
+import avater from "../assets/avater.svg";
 
 const Footer = () => (
   <footer className="w-full pt-14 pb-6 px-4 bg-[#101114] relative overflow-hidden">
@@ -10,7 +10,7 @@ const Footer = () => (
     <div className="relative z-10 flex flex-col items-center max-w-3xl mx-auto">
       {/* Profile Picture */}
       <div className="w-16 h-16 rounded-full bg-[#23242a] flex items-center justify-center mb-3 overflow-hidden border-2 border-[#23242a]">
-        <img src={hamisiImg} alt="Hamisi Abdalla" className="object-cover" />
+        <img src={avatar} alt="avater" className="object-cover" />
       </div>
       {/* Name and Title */}
       <div className="text-white font-bold text-lg">Hamisi Abdalla</div>
