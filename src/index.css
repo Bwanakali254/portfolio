@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/* GLOBAL STYLES FOR PIXEL-PERFECT FRAMER TEMPLATE MATCH */
+
+html,
+body,
+#root {
+  @apply h-full bg-[#101114] text-white font-sans;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Container utility for max width and centering */
+.container-center {
+  @apply max-w-[800px] mx-auto w-full flex flex-col items-center px-4 md:px-8;
+}
+
+/* Section vertical spacing */
+.section-space {
+  @apply mt-16 mb-8;
+}
+
+/* Subtle divider for section separation */
+.divider {
+  @apply border-t border-[#23242a] my-8 w-full;
+}
+
+/* Button base style */
+.btn {
+  @apply px-6 py-2 rounded-full font-medium transition shadow-md;
+}
+
+/* Primary button */
+.btn-primary {
+  @apply bg-[#c0d5f9] text-black hover:brightness-105;
+}
+
+/* Secondary button */
+.btn-secondary {
+  @apply bg-[#18191c] text-white border border-[#23242a] hover:bg-[#23242a];
+}
+
+/* Card base style */
+.card {
+  @apply bg-[#18191c] border border-[#23242a] rounded-xl shadow-lg;
+}
+
+/* Input base style */
+.input {
+  @apply px-4 py-2 rounded-md bg-[#18191c] border border-[#23242a] text-white placeholder-gray-500 focus:outline-none;
+}
+
+/* Headings */
+.heading-xl {
+  @apply text-5xl font-bold font-sans text-white text-center leading-tight;
+}
+.heading-md {
+  @apply text-2xl font-bold font-sans text-white text-center;
+}
+.heading-sm {
+  @apply text-xl font-semibold text-white text-center;
+}
+
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-x {
+  animation: scroll-x 18s linear infinite;
+}
+
+@keyframes scroll-x-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-x-reverse {
+  animation: scroll-x-reverse 18s linear infinite;
+}
+
+@layer utilities {
+  .animate-spin-slow {
+    animation: spin 2.5s linear infinite;
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading svg polyline {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.arrow-back {
+  stroke: #ff4d5033;
+}
+
+.arrow-front {
+  stroke: #ff4d4f;
+  stroke-dasharray: 48, 144;
+  stroke-dashoffset: 192;
+  animation: dash_682 1.4s linear infinite;
+}
+
+@keyframes dash_682 {
+  72.5% {
+    opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
