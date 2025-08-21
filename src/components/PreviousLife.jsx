@@ -4,6 +4,20 @@ import { ChevronDown } from "lucide-react";
 const jobs = [
   {
     icon: "🏛️",
+    title: "IT Support",
+    subtitle: "County Government of Kwale",
+    roles: [
+      "Providing technical support and troubleshooting for hardware and software issues.",
+      "Managing and maintaining network infrastructure and systems.",
+      "Assisting with IT equipment setup, configuration, and maintenance.",
+      "Supporting users with technical issues and providing training when necessary.",
+      "Ensuring security and efficiency of IT infrastructure.",
+      "Documenting IT procedures and maintaining system records.",
+      "Collaborating with other IT staff to resolve complex technical issues."
+    ]
+  },
+  {
+    icon: "🏛️",
     title: "Junior Network Engineer",
     subtitle: "County Government of Kwale",
     roles: [

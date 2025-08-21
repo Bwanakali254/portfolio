@@ -5,10 +5,6 @@ import sothsideCeo from "../assets/Testimonial/sothside ceo.jpg";
 // Client avatars: first is your real image, rest are placeholders
 const clientAvatars = [
   sothsideCeo,
-  "https://randomuser.me/api/portraits/men/32.jpg",
-  "https://randomuser.me/api/portraits/women/65.jpg",
-  "https://randomuser.me/api/portraits/men/76.jpg",
-  "https://randomuser.me/api/portraits/women/12.jpg",
 ];
 
 const testimonials = [
@@ -17,18 +13,6 @@ const testimonials = [
     name: "Mohammed",
     title: "CEO of southsideclothing",
     avatar: clientAvatars[0],
-  },
-  {
-    quote: "Professional, creative, and reliable. Highly recommended!",
-    name: "Jay MatsuS",
-    title: "Full-stack developer",
-    avatar: clientAvatars[1],
-  },
-  {
-    quote: "A pleasure to work with. The results were outstanding!",
-    name: "Sarah Lee",
-    title: "Product Lead at Grapho",
-    avatar: clientAvatars[2],
   },
 ];
 

@@ -1,25 +1,14 @@
 import React, { useState } from "react";
-import voyexImg from "../assets/projects/voyextour.png";
-import southsideImg from "../assets/projects/southside.png";
+import entServicesImg from "../assets/projects/Ent Services.png";
 
 const projects = [
   {
-    img: voyexImg,
-    title: "Voyex Tours and Travel",
-    description: "A modern travel agency website for booking adventures and exploring destinations.",
-    link: "https://voyex-tour.vercel.app/",
-    button: "Visit Voyex"
+    img: entServicesImg,
+    title: "ENT Services",
+    description: "Premier travel and lifestyle brand offering curated trips, reliable transfers, and premium gear in Kenya.",
+    link: "https://ent-services.vercel.app/",
+    button: "Visit ENT Services"
   },
-  {
-    img: southsideImg,
-    title: "Southside Clothing",
-    description: "Premium streetwear clothing store with a coastal vibe and urban style.",
-    link: "https://southsideclothing.vercel.app/",
-    button: "Visit Southside"
-  },
-  { img: "https://placehold.co/600x340?text=Project+1", title: "Explore the world with us" },
-  { img: "https://placehold.co/600x340?text=Project+2", title: "Creative Portfolio" },
-  { img: "https://placehold.co/600x340?text=Project+3", title: "Modern Dashboard" },
 ];
 
 const Showcase = () => {
