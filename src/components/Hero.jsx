@@ -1,36 +1,111 @@
-import React from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { gsap } from '../lib/gsap'
+import { scrollToId } from '../lib/scroll'
+import { heroChips, profile } from '../data'
+import NetworkCanvas from './NetworkCanvas'
 
-const Hero = () => (
-  <div className="w-full flex flex-col items-start text-left gap-4 max-w-[700px] pt-1 pb-4 px-6 mx-auto">
-    {/* Small Heading */}
-    <div className="flex items-center gap-2 text-base font-medium text-white/90 ">
-      <span className="text-2xl">👋</span>
-      <span>Hello I am,</span>
-    </div>
-    {/* Main Headline */}
-    <h1 className="font-serif text-5xl md:text-6xl text-[#e5e5e5] leading-tight">
-    Web Developer | IT Support
-    </h1>
-    {/* Description Paragraph */}
-    <p className="text-lg text-gray-400 max-w-2xl mb-3">
-    Full-stack developer with IT expertise—building responsive web apps and handling hardware, software, and network support with precision.
-    </p>
-    {/* Buttons Row */}
-    <div className="flex gap-4 mt-1">
-      <a
-        href="tel:+254796530452"
-        className="btn btn-primary bg-[#e5ecf7] text-[#18191c] border-none shadow-sm hover:brightness-105 transition font-semibold px-8 py-2 text-base"
-      >
-        Hire me
-      </a>
-      <a
-        href="#previous"
-        className="btn btn-secondary bg-transparent text-[#e5e5e5] border border-[#444] hover:bg-[#18191c] font-semibold px-8 py-2 text-base"
-      >
-        Discover my journey
-      </a>
-    </div>
-  </div>
-);
+const formatTime = () =>
+  new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Africa/Nairobi',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  }).format(new Date())
 
-export default Hero;
+function Clock() {
+  const [time, setTime] = useState(formatTime)
+
+  useEffect(() => {
+    const id = setInterval(() => setTime(formatTime()), 30000)
+    return () => clearInterval(id)
+  }, [])
+
+  return <span>{time} EAT</span>
+}
+
+function Word({ text, className = '' }) {
+  return (
+    <span className={`line ${className}`} aria-hidden="true">
+      {[...text].map((char, i) => (
+        <span key={i} className="ch">
+          {char}
+        </span>
+      ))}
+    </span>
+  )
+}
+
+export default function Hero({ reduced }) {
+  const root = useRef(null)
+
+  useLayoutEffect(() => {
+    if (reduced || !root.current) return undefined
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'expo.out' } })
+      tl.to('.letterbox--top', { yPercent: -100, duration: 1.5 }, 0)
+        .to('.letterbox--bottom', { yPercent: 100, duration: 1.5 }, 0)
+        .from('.ch', { yPercent: 115, duration: 1.3, stagger: 0.045 }, 0.2)
+        .from('[data-hero]', { y: 24, opacity: 0, duration: 1, stagger: 0.1 }, 0.8)
+
+      gsap.to('.hero__inner', {
+        yPercent: -10,
+        opacity: 0.15,
+        ease: 'none',
+        scrollTrigger: { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true },
+      })
+    }, root)
+
+    return () => ctx.revert()
+  }, [reduced])
+
+  return (
+    <section id="top" className="hero" ref={root}>
+      <NetworkCanvas reduced={reduced} />
+      <div className="hero__vignette" aria-hidden="true" />
+      <div className="letterbox letterbox--top" aria-hidden="true" />
+      <div className="letterbox letterbox--bottom" aria-hidden="true" />
+
+      <div className="hero__hud" aria-hidden="true">
+        <span className="rec">
+          <i /> Signal online
+        </span>
+        <span>
+          {profile.location} · <Clock />
+        </span>
+      </div>
+
+      <div className="wrap hero__inner">
+        <p className="eyebrow" data-hero>
+          IT support · Networking · Web development
+        </p>
+        <h1 className="hero__title" aria-label={profile.name}>
+          <Word text="Hamisi" />
+          <Word text="Abdalla" className="line--accent" />
+        </h1>
+        <p className="hero__lede" data-hero>
+          I keep systems running, and build the websites that run on them. From server rooms and hotel Wi-Fi to
+          a live e-commerce platform.
+        </p>
+        <div className="hero__cta" data-hero>
+          <button type="button" className="btn btn--primary" onClick={() => scrollToId('journey')}>
+            Follow the journey
+          </button>
+          <a className="btn btn--ghost" href={profile.cv} download>
+            Download CV
+          </a>
+        </div>
+        <ul className="chips" data-hero>
+          {heroChips.map((chip) => (
+            <li key={chip}>{chip}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="scroll-cue" aria-hidden="true">
+        <span>Scroll</span>
+        <i />
+      </div>
+    </section>
+  )
+}

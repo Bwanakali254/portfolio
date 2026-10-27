@@ -1,0 +1,4 @@
+Contact: https://www.linkedin.com/in/hamisi-hamisi
+Expires: 2027-10-27T00:00:00.000Z
+Preferred-Languages: en, sw
+Canonical: https://hamisi.vercel.app/.well-known/security.txt
